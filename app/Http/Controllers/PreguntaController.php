@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Pregunta;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class PreguntaController extends Controller
 {
+
+    public function getPreguntas()
+    {
+        $preguntas = Pregunta::with('respuestas')->get();
+        return response()->json($preguntas);
+        // return DataTables::of($preguntas)->make(true);
+    }
+
     /**
      * Display a listing of the resource.
      *
