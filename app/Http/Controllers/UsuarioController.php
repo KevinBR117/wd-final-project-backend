@@ -27,15 +27,16 @@ class UsuarioController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->correo = $request->get('correo');
+        $usuario->nombre = $request->get('nombre');
+        $usuario->apellido = $request->get('apellido');
+
+        $usuario ->save();
+        return response()->json(['success' => true]);
     }
 
     /**

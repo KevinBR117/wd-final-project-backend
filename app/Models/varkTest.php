@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
+class varkTest extends Model
 {
     use HasFactory;
-
-    public function varkTest()
+    public function usuario()
     {
-        return $this->hasOne(VarkTest::class, 'correo', 'correo');
+        return $this->hasOne(Usuario::class, 'correo', 'correo');
     }
 }

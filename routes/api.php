@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\PreguntaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PreguntaController;
+use App\Http\Controllers\VarkTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +21,15 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+
+Route::post('createVarkTest', [VarkTestController::class, 'store']);
+Route::get('readVarkTest', [VarkTestController::class, 'show']);
+//route update vark test
+//route delete vark test
 Route::get('getPreguntas', [PreguntaController::class, 'getPreguntas']);
+
+
+Route::post('createUsuario', [UsuarioController::class, 'store']);
+//route read usuario
+//route update usuario
+//route delete usuario
