@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Personality;
+use App\Http\Controllers\Controller;
+use App\Models\PersonalityTest\Personality;
 use Illuminate\Http\Request;
 
 class PersonalityController extends Controller

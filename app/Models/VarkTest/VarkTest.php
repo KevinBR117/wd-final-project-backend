@@ -5,7 +5,7 @@ namespace App\Models\VarkTest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class varkTest extends Model
+class VarkTest extends Model
 {
     use HasFactory;
 
