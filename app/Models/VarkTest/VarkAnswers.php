@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\VarkTest;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Characteristic extends Model
+class VarkAnswers extends Model
 {
     use HasFactory;
 }
