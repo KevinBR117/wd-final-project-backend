@@ -21,15 +21,11 @@ use App\Http\Controllers\VarkTestController;
 //     return $request->user();
 // });
 
+Route::post('create-vark-test', [VarkTestController::class, 'store']);
+Route::get('read-vark-test', [VarkTestController::class, 'show']);
+Route::get('get-preguntas', [PreguntaController::class, 'getPreguntas']);
+Route::post('create-usuario', [UsuarioController::class, 'store']);
 
-Route::post('createVarkTest', [VarkTestController::class, 'store']);
-Route::get('readVarkTest', [VarkTestController::class, 'show']);
-//route update vark test
-//route delete vark test
-Route::get('getPreguntas', [PreguntaController::class, 'getPreguntas']);
-
-
-Route::post('createUsuario', [UsuarioController::class, 'store']);
 //route read usuario
 //route update usuario
 //route delete usuario
