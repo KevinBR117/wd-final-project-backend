@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\PersonalityController;
+use App\Http\Controllers\PersonalityTest\UsersController;
+use App\Http\Controllers\PersonalityTest\PersonalityController;
+
 use App\Http\Controllers\VarkTest\QuestionsController;
 use App\Http\Controllers\VarkTest\VarkTestController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('create-vark-test', [VarkTestController::class, 'store']);
 Route::get('get-personalities', [PersonalityController::class, 'getPersonalities']);
 
-Route::post('create-usuario', [UsersController::class, 'store']);
+//Route::post('create-usuario', [UsersController::class, 'store']);
+
 Route::get('read-vark-test', [VarkTestController::class, 'show']);
 Route::get('get-questions', [QuestionsController::class, 'getQuestions']);

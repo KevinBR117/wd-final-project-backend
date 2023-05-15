@@ -9,7 +9,8 @@ class Personality extends Model
 {
     use HasFactory;
 
-    public function characteristics(){
+    public function characteristics()
+    {
         return $this->hasMany(Characteristic::class, 'personalityId', 'id');
     }
 }

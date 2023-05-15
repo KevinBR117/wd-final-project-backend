@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\PersonalityTest;
 
+use App\Http\Controllers\Controller;
 use App\Models\PersonalityTest\Characteristic;
 use Illuminate\Http\Request;
 

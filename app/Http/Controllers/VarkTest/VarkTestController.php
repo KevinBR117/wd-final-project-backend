@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\VarkTest;
 
 use App\Http\Controllers\Controller;
-use App\Models\VarkTest\varkTest;
+use App\Models\VarkTest\VarkTest;
 use Illuminate\Http\Request;
 
 class VarkTestController extends Controller
@@ -11,7 +11,7 @@ class VarkTestController extends Controller
 
     public function store(Request $request)
     {
-        $newVarkTest = new varkTest();
+        $newVarkTest = new VarkTest();
         $newVarkTest->correo = $request->get('email');
         $newVarkTest->puntuacionV = $request->get('visualPunctuation');
         $newVarkTest->puntuacionA = $request->get('auralPunctuation');
@@ -26,19 +26,19 @@ class VarkTestController extends Controller
 
     public function show(Request $request)
     {
-        $test = varkTest::with('usuario')->where('correo', $request->get('correo'))->get();
+        $test = VarkTest::with('usuario')->where('correo', $request->get('correo'))->get();
         return response()->json($test);
     }
 
-    public function edit(varkTest $varkTest)
+    public function edit(VarkTest $varkTest)
     {
     }
 
-    public function update(Request $request, varkTest $varkTest)
+    public function update(Request $request, VarkTest $varkTest)
     {
     }
 
-    public function destroy(varkTest $varkTest)
+    public function destroy(VarkTest $varkTest)
     {
     }
 }
