@@ -2,17 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Personality;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\PersonalityTest\Personality;
 use Illuminate\Database\Seeder;
 
 class PersonalitySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         Personality::insert([

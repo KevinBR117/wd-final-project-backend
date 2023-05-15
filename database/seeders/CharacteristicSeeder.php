@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Characteristic;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\PersonalityTest\Characteristic;
 use Illuminate\Database\Seeder;
 
 class CharacteristicSeeder extends Seeder
@@ -35,7 +34,7 @@ class CharacteristicSeeder extends Seeder
             ['personalityId' => '2','characteristic' => 'Lleva una vida muy privada'],
             ['personalityId' => '2','characteristic' => 'Gran capacidad de concentración'],
             ['personalityId' => '2','characteristic' => 'Se siente agusto a solas'],
-            
+
             ['personalityId' => '3','characteristic' => 'Confía en la experiencia propia'],
             ['personalityId' => '3','characteristic' => 'Realista, ve lo que es'],
             ['personalityId' => '3','characteristic' => 'Utiliza destrezas ya aprendidas'],
@@ -65,7 +64,7 @@ class CharacteristicSeeder extends Seeder
             ['personalityId' => '5','characteristic' => 'Honesto y directo'],
             ['personalityId' => '5','characteristic' => 'Valora la honestidad y justicia'],
             ['personalityId' => '5','characteristic' => 'Argumenta o debate por diversión'],
-            
+
             ['personalityId' => '6','characteristic' => 'Tiende a ver cualidades ajenas'],
             ['personalityId' => '6','characteristic' => 'Se convence por sus sensaciones'],
             ['personalityId' => '6','characteristic' => 'Aparenta ser cálido y amistoso'],
@@ -75,7 +74,7 @@ class CharacteristicSeeder extends Seeder
             ['personalityId' => '6','characteristic' => 'Diplomático y con mucho tacto'],
             ['personalityId' => '6','characteristic' => 'Valora la armonía y la compasión'],
             ['personalityId' => '6','characteristic' => 'Evita discusiones y conflictos'],
-            
+
             ['personalityId' => '7','characteristic' => 'Trabajar primero, jugar después'],
             ['personalityId' => '7','characteristic' => 'Prefiere terminar proyectos'],
             ['personalityId' => '7','characteristic' => 'Se siente agusto llevando sus agendas'],
@@ -85,7 +84,7 @@ class CharacteristicSeeder extends Seeder
             ['personalityId' => '7','characteristic' => 'Quiere que las cosas se decidan'],
             ['personalityId' => '7','characteristic' => 'Serio y convencional'],
             ['personalityId' => '7','characteristic' => 'Justifica la mayoría de las reglas'],
-            
+
             ['personalityId' => '8','characteristic' => 'Jugar primero, trabajar después'],
             ['personalityId' => '8','characteristic' => 'Prefiere empezar proyectos'],
             ['personalityId' => '8','characteristic' => 'Desea la libertad de la espontaneidad'],
