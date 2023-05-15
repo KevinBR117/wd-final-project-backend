@@ -11,10 +11,10 @@ class AdminSeeder extends Seeder
     public function run()
     {
         Admin::insert([
-            'correo' => 'admin@admin.com',
-            'password' => 'admin',
-            'nombre' => 'jhon',
-            'apellido' => 'doe'
+            'email' => 'admin@admin.com',
+            'name' => 'John',
+            'lastName' => 'Doe',
+            'password' => 'admin'
         ]);
     }
 }

@@ -5,7 +5,11 @@ namespace Database\Seeders;
 use App\Models\Pregunta;
 use Illuminate\Database\Seeder;
 
+<<<<<<< HEAD:database/seeders/PreguntaSeeder.php
 class PreguntaSeeder extends Seeder
+=======
+class VarkQuestionsSeeder extends Seeder
+>>>>>>> 2ac8870 (improve all the backend controllers, seeders, etc.):database/seeders/VarkQuestionsSeeder.php
 {
     public function run()
     {

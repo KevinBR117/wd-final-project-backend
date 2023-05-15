@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\VarkTestController;
+use App\Http\Controllers\VarkTest\VarkTestController;
 use Illuminate\Support\Facades\Route;
 
 /*
