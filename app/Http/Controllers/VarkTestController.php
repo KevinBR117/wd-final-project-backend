@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 class VarkTestController extends Controller
 {
 
-
-
     public function store(Request $request)
     {
         $nuevoTest = new varkTest();
