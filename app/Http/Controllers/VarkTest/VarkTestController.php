@@ -12,12 +12,12 @@ class VarkTestController extends Controller
     public function store(Request $request)
     {
         $newVarkTest = new VarkTest();
-        $newVarkTest->correo = $request->get('email');
-        $newVarkTest->puntuacionV = $request->get('visualPunctuation');
-        $newVarkTest->puntuacionA = $request->get('auralPunctuation');
-        $newVarkTest->puntuacionR = $request->get('readPunctuation');
-        $newVarkTest->puntuacionK = $request->get('kinestheticPunctuation');
-        $newVarkTest->diagnostico = $request->get('varkTypeObtained	');
+        $newVarkTest->email = $request->get('email');
+        $newVarkTest->visualPunctuation = $request->get('visualPunctuation');
+        $newVarkTest->auralPunctuation = $request->get('auralPunctuation');
+        $newVarkTest->readPunctuation = $request->get('readPunctuation');
+        $newVarkTest->inestheticPunctuation = $request->get('kinestheticPunctuation');
+        $newVarkTest->varkTypeObtained = $request->get('varkTypeObtained	');
 
         $newVarkTest->save();
         return response()->json(['success' => true]);
@@ -26,7 +26,7 @@ class VarkTestController extends Controller
 
     public function show(Request $request)
     {
-        $test = VarkTest::with('usuario')->where('correo', $request->get('correo'))->get();
+        $test = VarkTest::with('user')->where('email', $request->get('email'))->get();
         return response()->json($test);
     }
 

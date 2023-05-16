@@ -32,4 +32,6 @@ class Users extends Model
     {
         return $this->hasOne(VarkTest::class, 'email', 'email');
     }
+
+    
 }
