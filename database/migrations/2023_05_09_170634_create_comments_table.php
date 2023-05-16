@@ -9,10 +9,10 @@ return new class extends Migration {
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 50);
-            $table->string('apellido', 50);
-            $table->string('correo', 50);
-            $table->string('comentario', 255);
+            $table->string('name', 50);
+            $table->string('lastName', 50);
+            $table->string('email', 50);
+            $table->string('comment', 255);
             $table->timestamps();
         });
     }

@@ -11,10 +11,10 @@ class CommentSeeder extends Seeder
     public function run()
     {
         Comment::insert([
-            'nombre' => 'John',
-            'apellido' => 'Doe',
-            'correo' => 'admin@admin.com',
-            'comentario' => 'comment'
+            'name' => 'John',
+            'lastName' => 'Doe',
+            'email' => 'admin@admin.com',
+            'comment' => 'comment'
         ]);
     }
 }
