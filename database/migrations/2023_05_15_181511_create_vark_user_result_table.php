@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->integer('readPunctuation');
             $table->integer('kinestheticPunctuation');
             $table->string('varkTypeObtained');
-//            $table->timestamps();
+           $table->timestamps();
         });
     }
 

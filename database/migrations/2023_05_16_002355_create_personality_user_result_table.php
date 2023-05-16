@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('qualifierScore');
             $table->integer('perceptualScore');
             $table->string('personalityTypeObtained', 50);
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

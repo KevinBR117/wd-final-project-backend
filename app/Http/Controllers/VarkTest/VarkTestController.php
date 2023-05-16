@@ -11,13 +11,14 @@ class VarkTestController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $newVarkTest = new VarkTest();
         $newVarkTest->email = $request->get('email');
         $newVarkTest->visualPunctuation = $request->get('visualPunctuation');
         $newVarkTest->auralPunctuation = $request->get('auralPunctuation');
         $newVarkTest->readPunctuation = $request->get('readPunctuation');
-        $newVarkTest->inestheticPunctuation = $request->get('kinestheticPunctuation');
-        $newVarkTest->varkTypeObtained = $request->get('varkTypeObtained	');
+        $newVarkTest->kinestheticPunctuation = $request->get('kinestheticPunctuation');
+        $newVarkTest->varkTypeObtained = $request->get('varkTypeObtained');
 
         $newVarkTest->save();
         return response()->json(['success' => true]);
