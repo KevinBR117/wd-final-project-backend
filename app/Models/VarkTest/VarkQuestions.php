@@ -2,8 +2,9 @@
 
 namespace App\Models\VarkTest;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\VarkTest\VarkAnswers;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class VarkQuestions extends Model
 {

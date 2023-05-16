@@ -26,6 +26,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('get-questions', [QuestionsController::class, 'getQuestions']);
 Route::post('send-vark-test', [VarkTestController::class, 'store']);
 Route::get('read-vark-test', [VarkTestController::class, 'show']);
+// exportar test a pdf (request email)
+Route::get('get-vark-test-file', [VarkTestController::class, 'exportVarkTest']);
+// exportar todos los test en un pdf (sin request sin parametros)
+Route::get('get-all-vark-test-file', [VarkTestController::class,'exportAllVarkTest']);
+// exportar por tipo de test (request varkType {visual, aural, read, kinesthetic})
+Route::get('get-vark-test-by-type-file', [VarkTestController::class, 'exportVarkTestByType']);
+
 
 Route::get('get-personalities', [PersonalityController::class, 'getPersonalities']);
 Route::post('send-personality-test', [PersonalityTestController::class, 'store']);

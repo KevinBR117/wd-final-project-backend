@@ -5,6 +5,7 @@ namespace App\Http\Controllers\VarkTest;
 use App\Http\Controllers\Controller;
 use App\Models\VarkTest\VarkTest;
 use Illuminate\Http\Request;
+use PDF;
 
 class VarkTestController extends Controller
 {
@@ -29,6 +30,28 @@ class VarkTestController extends Controller
     {
         $test = VarkTest::with('user')->where('email', $request->get('email'))->get();
         return response()->json($test);
+    }
+
+    public function exportVarkTest(Request $request){
+        $data = VarkTest::with('user')->where('email', $request->get('email'))->get();
+        $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
+
+        return $pdf->download('vark_test.pdf');
+
+    }
+    public function exportAllVarkTest(){
+        $data = VarkTest::with('user')->get();
+        $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
+        
+        return $pdf->download('vark_test.pdf');
+        
+    }
+    public function exportVarkTestByType(Request $request){
+        $data = VarkTest::with('user')->where('varkTypeObtained', $request->get('varkType'))->get();
+        $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
+
+        return $pdf->download('vark_test.pdf');
+
     }
 
     public function edit(VarkTest $varkTest)
