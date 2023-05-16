@@ -2,8 +2,9 @@
 
 namespace App\Models\PersonalityTest;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\PersonalityTest\Characteristic;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Personality extends Model
 {

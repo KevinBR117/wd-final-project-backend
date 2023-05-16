@@ -35,24 +35,35 @@ class VarkTestController extends Controller
     public function exportVarkTest(Request $request){
         $data = VarkTest::with('user')->where('email', $request->get('email'))->get();
         $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
-
         return $pdf->download('vark_test.pdf');
 
     }
     public function exportAllVarkTest(){
         $data = VarkTest::with('user')->get();
         $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
-        
-        return $pdf->download('vark_test.pdf');
+        return $pdf->download('all_vark_test.pdf');
         
     }
     public function exportVarkTestByType(Request $request){
         $data = VarkTest::with('user')->where('varkTypeObtained', $request->get('varkType'))->get();
         $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
-
-        return $pdf->download('vark_test.pdf');
+        return $pdf->download('vark_test_by_type.pdf');
 
     }
+
+    public function getAllVarkTest()
+    {
+        $tests = VarkTest::with('user')->get();
+        return response()->json($tests);
+    }
+
+    public function getVarkTestByType(Request $request)
+    {
+        $tests = VarkTest::with('user')->where('varkTypeObtained', $request->get('varkType'))->get();
+        return response()->json($tests);
+    }
+
+
 
     public function edit(VarkTest $varkTest)
     {
