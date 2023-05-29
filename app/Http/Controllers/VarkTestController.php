@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\VarkTest;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\VarkTest\VarkQuestions;
 use App\Models\VarkTest\VarkTest;
 use Illuminate\Http\Request;
 use PDF;
@@ -12,7 +12,6 @@ class VarkTestController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $newVarkTest = new VarkTest();
         $newVarkTest->email = $request->get('email');
         $newVarkTest->visualPunctuation = $request->get('visualPunctuation');
@@ -32,19 +31,29 @@ class VarkTestController extends Controller
         return response()->json($test);
     }
 
-    public function exportVarkTest(Request $request){
+    public function getQuestions(){
+        $questions = VarkQuestions::with('answers')->get();
+        return response()->json($questions);
+    }
+
+    public function exportVarkTest(Request $request)
+    {
         $data = VarkTest::with('user')->where('email', $request->get('email'))->get();
         $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
         return $pdf->download('vark_test.pdf');
 
     }
-    public function exportAllVarkTest(){
+
+    public function exportAllVarkTest()
+    {
         $data = VarkTest::with('user')->get();
         $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
         return $pdf->download('all_vark_test.pdf');
-        
+
     }
-    public function exportVarkTestByType(Request $request){
+
+    public function exportVarkTestByType(Request $request)
+    {
         $data = VarkTest::with('user')->where('varkTypeObtained', $request->get('varkType'))->get();
         $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
         return $pdf->download('vark_test_by_type.pdf');
@@ -62,8 +71,6 @@ class VarkTestController extends Controller
         $tests = VarkTest::with('user')->where('varkTypeObtained', $request->get('varkType'))->get();
         return response()->json($tests);
     }
-
-
 
     public function edit(VarkTest $varkTest)
     {

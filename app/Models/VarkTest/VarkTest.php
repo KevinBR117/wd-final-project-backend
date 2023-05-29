@@ -10,7 +10,7 @@ class VarkTest extends Model
 {
     use HasFactory;
 
-    protected $table = 'vark_user_result';
+    protected $table = 'vark_users_result';
     public function user()
     {
         return $this->hasOne(Users::class, 'email', 'email');

@@ -1,15 +1,15 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\PersonalityTest;
 
-use App\Models\PersonalityTest\Characteristic;
+use App\Models\PersonalityTest\PersonalityCharacteristic;
 use Illuminate\Database\Seeder;
 
-class CharacteristicSeeder extends Seeder
+class PersonalityCharacteristicSeeder extends Seeder
 {
     public function run()
     {
-        Characteristic::insert([
+        PersonalityCharacteristic::insert([
             ['personalityId' => '1','characteristic' => 'Emprendedor y entusisata'],
             ['personalityId' => '1','characteristic' => 'Actúa y luego piensa'],
             ['personalityId' => '1','characteristic' => 'Piensa en voz alta'],

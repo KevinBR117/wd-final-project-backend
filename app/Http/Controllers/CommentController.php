@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-// use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use PDF;
 

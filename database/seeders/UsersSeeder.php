@@ -11,22 +11,16 @@ class UsersSeeder extends Seeder
     {
         Users::insert([
             [
-                'email' => 'alanmenchaca@mgail.com',
-                'name' => 'Alan',
-                'lastName' => 'Menchaca',
-                // 'password' => 'foo@bar'
+                'email' => 'alanmenchaca@mail.com',
+                'name' => 'Alan Menchaca',
             ],
             [
-                'email' => 'kevinbarboza@gmail.com',
-                'name' => 'Kevin',
-                'lastName' => 'Barboza',
-                // 'password' => 'foo@bar'
+                'email' => 'kevinbarboza@mail.com',
+                'name' => 'Kevin Barboza',
             ],
             [
                 'email' => 'victordeleon@mail.com',
-                'name' => 'Victor',
-                'lastName' => 'de Leon',
-                // 'password' => 'foo@bar'
+                'name' => 'Victor de Leon',
             ]
         ]);
     }
