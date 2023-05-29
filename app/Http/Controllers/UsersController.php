@@ -24,7 +24,7 @@ class UsersController extends Controller
         $user = new Users;
         $user->email = $request->get('email');
         $user->name = $request->get('name');
-
+        
         $user->save();
         return response()->json(['success' => true]);
     }
