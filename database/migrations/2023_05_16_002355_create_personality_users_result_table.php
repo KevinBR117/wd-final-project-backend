@@ -6,14 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('personality_user_result', function (Blueprint $table) {
+        Schema::create('personality_users_result', function (Blueprint $table) {
             $table->id();
             $table->string('email', 50);
             $table->integer('extrovertScore');
@@ -29,13 +24,8 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('personality_user_result');
+        Schema::dropIfExists('personality_users_result');
     }
 };

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class PersonalityTest extends Model
 {
     use HasFactory;
-    protected $table = 'personality_user_result';
+    protected $table = 'personality_users_result';
     public function user()
     {
         return $this->hasOne(Users::class, 'email', 'email');

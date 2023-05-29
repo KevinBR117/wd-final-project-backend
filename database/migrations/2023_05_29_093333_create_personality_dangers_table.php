@@ -7,14 +7,15 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('vark_questions', function (Blueprint $table) {
+        Schema::create('personality_dangers', function (Blueprint $table) {
             $table->id();
-            $table->string('question', 255);
+            $table->string('acronymId', 8);
+            $table->string('danger', 255);
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('vark_questions');
+        Schema::dropIfExists('personality_dangers');
     }
 };

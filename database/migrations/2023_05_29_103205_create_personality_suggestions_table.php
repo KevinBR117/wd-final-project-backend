@@ -5,19 +5,17 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-
     public function up()
     {
-        Schema::create('characteristics', function (Blueprint $table) {
+        Schema::create('personality_suggestions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('personalityId');
-            $table->string('characteristic', 255);
-            // $table->timestamps();
+            $table->string('acronymId', 8);
+            $table->string('suggestion', 255);
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('characteristics');
+        Schema::dropIfExists('personality_suggestions');
     }
 };

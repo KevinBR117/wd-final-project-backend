@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\VarkTest;
 
 use App\Models\VarkTest\VarkAnswers;
 use Illuminate\Database\Seeder;

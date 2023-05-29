@@ -11,8 +11,7 @@ class AdminSeeder extends Seeder
     {
         Admin::insert([
             'email' => 'admin@admin.com',
-            'name' => 'John',
-            'lastName' => 'Doe',
+            'name' => 'John Doe',
             'password' => 'admin'
         ]);
     }

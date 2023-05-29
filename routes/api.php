@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\VarkTest\QuestionsController;
-use App\Http\Controllers\VarkTest\VarkTestController;
+use App\Http\Controllers\UsersController;
 
-use App\Http\Controllers\PersonalityTest\PersonalityController;
-use App\Http\Controllers\PersonalityTest\PersonalityTestController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\VarkTestController;
+
+use App\Http\Controllers\PersonalityTestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,30 +23,37 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::post('create-usuario', [UsersController::class, 'store']);// endpoint para crear usuario cuando realiza uno de los dos test
+Route::post('create-user', [UsersController::class, 'store']);// endpoint para crear usuario cuando realiza uno de los dos test
 
-Route::get('get-questions', [QuestionsController::class, 'getQuestions']);
-Route::post('send-vark-test', [VarkTestController::class, 'store']);
-Route::get('read-vark-test', [VarkTestController::class, 'show']);
+// #################################################################################
 
-Route::get('get-vark-test-file', [VarkTestController::class, 'exportVarkTest']);// exportar test a pdf (request email)
-Route::get('get-all-vark-test-file', [VarkTestController::class,'exportAllVarkTest']);// exportar todos los test en un pdf (sin request sin parametros)
+Route::get('get-vark-questions', [VarkTestController::class, 'getQuestions']);
+Route::get('read-user-vark-test', [VarkTestController::class, 'show']);
+
+Route::post('send-user-vark-test', [VarkTestController::class, 'store']);
+
+Route::get('get-vark-test-by-type', [VarkTestController::class, 'getVarkTestByType']);//test por tipo endpoint con parametro varkType
+Route::get('get-all-vark-test', [VarkTestController::class, 'getAllVarkTest']); //todos los test endpoint sin parametros
+
+Route::get('get-user-vark-test-file', [VarkTestController::class, 'exportVarkTest']);// exportar test a pdf (request email)
+Route::get('get-all-vark-test-file', [VarkTestController::class, 'exportAllVarkTest']);// exportar todos los test en un pdf (sin request sin parametros)
 Route::get('get-vark-test-by-type-file', [VarkTestController::class, 'exportVarkTestByType']);//  exportar por tipo de test (request varkType {visual, aural, read, kinesthetic})
 
+// ####################################################################################################
+
+Route::get('get-personalities-questions', [PersonalityTestController::class, 'getPersonalities']);
+Route::get('get-personality-main-char', [PersonalityTestController::class, 'getMainCharacteristics']);
+Route::get('get-personality-main-dangers', [PersonalityTestController::class, 'getMainDangers']);
+Route::get('get-personality-main-suggestions', [PersonalityTestController::class, 'getMainSuggestions']);
+
+Route::post('send-user-personality-test', [PersonalityTestController::class, 'store']);
+
 // rutas para obtener datos y usar en dashboards
-Route::get('get-vark-test', [VarkTestController::class, 'show']); //test individual endpoint con parametro email
-Route::get('get-all-vark-test', [VarkTestController::class,'getAllVarkTest']); //todos los test endpoint sin parametros
-Route::get('get-vark-test-by-type', [VarkTestController::class, 'getVarkTestByType']);//test por tipo endpoint con parametro varkType
+Route::get('get-user-personality-test', [PersonalityTestController::class, 'show']); //test individual endpoint con parametro email
+Route::get('get-personality-test-by-type', [PersonalityTestController::class, 'getPersonalityTestByType']);//test por tipo endpoint con parametro personalityType
+Route::get('get-all-personality-test', [PersonalityTestController::class, 'getAllPersonalityTest']); //todos los test endpoint sin parametros
 
-
-Route::get('get-personalities', [PersonalityController::class, 'getPersonalities']);
-Route::post('send-personality-test', [PersonalityTestController::class, 'store']);
-route::get('read-personality-test', [VarkTestController::class, 'show']);
-
-// rutas para obtener datos y usar en dashboards
-Route::get('get-personality-test', [PersonalityController::class, 'show']); //test individual endpoint con parametro email
-Route::get('get-all-personality-test', [PersonalityController::class,'getAllPersonalityTest']); //todos los test endpoint sin parametros
-Route::get('get-personality-test-by-type', [PersonalityController::class, 'getPersonalityTestByType']);//test por tipo endpoint con parametro personalityType
+// ####################################################################################################
 
 Route::post('send-comments', [CommentController::class, 'store']);
 Route::get('get-comments-file', [CommentController::class, 'exportPDF']);//exportar archivo pdf de comentarios

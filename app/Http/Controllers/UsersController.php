@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    
+
     public function index()
     {
         //
@@ -18,19 +18,18 @@ class UsersController extends Controller
         //
     }
 
-    
+
     public function store(Request $request)
     {
         $user = new Users;
         $user->email = $request->get('email');
         $user->name = $request->get('name');
-        $user->lastName = $request->get('lastName');
 
-        $user ->save();
+        $user->save();
         return response()->json(['success' => true]);
     }
 
-    
+
     public function show($id)
     {
         //
@@ -41,7 +40,7 @@ class UsersController extends Controller
         //
     }
 
-    
+
     public function update(Request $request, $id)
     {
         //

@@ -1,15 +1,15 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\PersonalityTest;
 
-use App\Models\PersonalityTest\Personality;
+use App\Models\PersonalityTest\PersonalityPersonalities;
 use Illuminate\Database\Seeder;
 
-class PersonalitySeeder extends Seeder
+class PersonalityPersonalitiesSeeder extends Seeder
 {
     public function run()
     {
-        Personality::insert([
+        PersonalityPersonalities::insert([
             ['personality' => 'Extrovertido'],
             ['personality' => 'Introvertido'],
             ['personality' => 'Sensorial'],
