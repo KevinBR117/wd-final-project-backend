@@ -39,7 +39,7 @@ Route::get('get-user-vark-test-file-to-pdf', [VarkTestController::class, 'export
 Route::get('get-all-vark-test-file-to-pdf', [VarkTestController::class, 'exportAllVarkTest']);// exportar todos los test en un pdf (sin request sin parametros)
 Route::get('get-vark-test-by-type-file-to-pdf', [VarkTestController::class, 'exportVarkTestByType']);//  exportar por tipo de test (request varkType {visual, aural, read, kinesthetic})
 
-Route::get('get-user-vark-test-file-to-excel', [VarkTestController::class, 'exportVarkTestToExcel']);// esportar test a excel (request email)
+// Route::get('get-user-vark-test-file-to-excel', [VarkTestController::class, 'exportVarkTestToExcel']);// esportar test a excel (request email)
 
 // ####################################################################################################
 
@@ -50,12 +50,13 @@ Route::get('get-personality-main-suggestions', [PersonalityTestController::class
 
 Route::post('send-user-personality-test', [PersonalityTestController::class, 'store']);
 
-// rutas para obtener datos y usar en dashboards
-Route::get('get-user-personality-test', [PersonalityTestController::class, 'show']); //test individual endpoint con parametro email
-Route::get('get-personality-test-by-type', [PersonalityTestController::class, 'getPersonalityTestByType']);//test por tipo endpoint con parametro personalityType
-Route::get('get-all-personality-test', [PersonalityTestController::class, 'getAllPersonalityTest']); //todos los test endpoint sin parametros
+Route::get('get-user-personality-test-to-pdf', [PersonalityTestController::class, 'show']); //test individual endpoint con parametro email
+Route::get('get-personality-test-by-type-to-pdf', [PersonalityTestController::class, 'getPersonalityTestByType']);//test por tipo endpoint con parametro personalityType
+Route::get('get-all-personality-test-to-pdf', [PersonalityTestController::class, 'getAllPersonalityTest']); //todos los test endpoint sin parametros
 
 // ####################################################################################################
 
 Route::post('send-comments', [CommentController::class, 'store']);
 Route::get('get-comments-file', [CommentController::class, 'exportPDF']);//exportar archivo pdf de comentarios
+
+// ################################################## endpoint para dashboards #############################################
