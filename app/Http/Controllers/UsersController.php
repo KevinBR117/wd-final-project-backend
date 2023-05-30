@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Illuminate\Http\Request;
+use App\Models\VarkTest\VarkTest;
+use App\Models\PersonalityTest\PersonalityTest;
 
 class UsersController extends Controller
 {
@@ -49,8 +51,12 @@ class UsersController extends Controller
     public function delete(Request $request)
     {
         $user = Users::where('email', $request->email);
+        $varkTest = VarkTest::where('email', $request->email);
+        $personalityTest = PersonalityTest::where('email', $request->email);
         // dd($user);
         $user->delete();
+        $varkTest->delete();
+        $personalityTest->delete();
         return response()->json('eliminado');
     }
 }
