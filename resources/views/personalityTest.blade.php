@@ -16,7 +16,6 @@
             <thead>
                 <tr class="table-danger">
                     <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
                     <th scope="col">Email</th>
                     <th scope="col">extorvert score</th>
                     <th scope="col">introvert score</th>
@@ -33,7 +32,6 @@
                 @foreach ($data as $user)
                     <tr>
                         <td>{{ $user->user->name }}</td>
-                        <td>{{ $user->user->lastName }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->extrovertScore }}</td>
                         <td>{{ $user->introvertScore }}</td>

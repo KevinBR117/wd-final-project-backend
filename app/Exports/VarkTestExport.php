@@ -35,11 +35,13 @@ class VarkTestExport implements
     function __construct($email)
     {
         $this->email = $email;
+        // dd($email);
     }
 
     public function query()
     {
-        $data = VarkTest::query()->with('user')->where('email', $this->email)->get();
+        // $data = VarkTest::query()->with('user')->where('email', $this->email)->get();
+        $data = VarkTest::query()->with('user')->where('email', $this->email);
         // dd($data);
         return $data;
     }
@@ -110,8 +112,8 @@ class VarkTestExport implements
 
                 $this->data = $this->query();
                 // dd($this->data);
-                foreach ($this->data as $data) {
-                    // dd($data);
+                foreach ($this->data->get() as $data) {
+                    // print_r($data);
                     $this->posicionI +=  1;
                     $this->posicionJ += 1;
 

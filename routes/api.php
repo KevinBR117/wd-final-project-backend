@@ -40,7 +40,7 @@ Route::get('get-user-vark-test-file-to-pdf', [VarkTestController::class, 'export
 Route::get('get-all-vark-test-file-to-pdf', [VarkTestController::class, 'exportAllVarkTest']);// exportar todos los test en un pdf (sin request sin parametros)
 Route::get('get-vark-test-by-type-file-to-pdf', [VarkTestController::class, 'exportVarkTestByType']);//  exportar por tipo de test (request varkType {visual, aural, read, kinesthetic})
 
-// Route::get('get-user-vark-test-file-to-excel', [VarkTestController::class, 'exportVarkTestToExcel']);// esportar test a excel (request email)
+Route::get('get-user-vark-test-file-to-excel', [VarkTestController::class, 'exportVarkTestToExcel']);// esportar test a excel (request email)
 
 // ####################################################################################################
 
