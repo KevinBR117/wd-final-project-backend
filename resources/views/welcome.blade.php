@@ -21,6 +21,8 @@
         </style>
     </head>
     <body class="antialiased">
+        <div id="sfchyf4m93q9dj537clhzzqe32pwqxa3uks"></div><script type="text/javascript" src="https://counter10.optistats.ovh/private/counter.js?c=hyf4m93q9dj537clhzzqe32pwqxa3uks&down=async" async></script><br><a href="https://www.contadorvisitasgratis.com">contador visitas blog</a><noscript><a href="https://www.contadorvisitasgratis.com" title="contador visitas blog"><img src="https://counter10.optistats.ovh/private/contadorvisitasgratis.php?c=hyf4m93q9dj537clhzzqe32pwqxa3uks" border="0" title="contador visitas blog" alt="contador visitas blog"></a></noscript>
+
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">

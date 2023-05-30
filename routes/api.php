@@ -3,6 +3,7 @@
 use App\Http\Controllers\UsersController;
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\VarkTestController;
 
 use App\Http\Controllers\PersonalityTestController;
@@ -79,3 +80,5 @@ route::get('get-count-vark-test-by-type', [VarkTestController::class, 'getCountV
 route::get('get-total-personality-test', [PersonalityTestController::class, 'getTotalPersonalityTest']); //request none
 route::get('get-count-personality-test-by-type', [PersonalityTestController::class, 'getCountPersonalityTestByType']); //request none
 // #################################################
+
+route::post('send-email', [MailController::class, 'sendMail']);
