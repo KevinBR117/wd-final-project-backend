@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post('create-user', [UsersController::class, 'store']);// endpoint para crear usuario cuando realiza uno de los dos test
+Route::get('delete-user', [UsersController::class, 'delete']);// endpoint para eleminiar un usuario parametro {email}
 
 // #################################################################################
 

@@ -24,7 +24,7 @@ class UsersController extends Controller
         $user = new Users;
         $user->email = $request->get('email');
         $user->name = $request->get('name');
-        
+
         $user->save();
         return response()->json(['success' => true]);
     }
@@ -46,8 +46,11 @@ class UsersController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function delete(Request $request)
     {
-        //
+        $user = Users::where('email', $request->email);
+        // dd($user);
+        $user->delete();
+        return response()->json('eliminado');
     }
 }
