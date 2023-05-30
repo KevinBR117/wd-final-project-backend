@@ -76,6 +76,18 @@ class PersonalityTestController extends Controller
         return PersonalitySuggestions::all();
     }
 
+    public function getAllPersonalityTest()
+    {
+        $tests = PersonalityTest::with('user')->get();
+        return response()->json($tests);
+    }
+
+    public function getPersonalityTestByType(Request $request)
+    {
+        $tests = PersonalityTest::with('user')->where('varkTypeObtained', $request->get('varkType'))->get();
+        return response()->json($tests);
+    }
+
     public function exportPersonalityTest(Request $request)
     {
         $data = PersonalityTest::with('user')->where('email', $request->get('email'))->get();
@@ -120,18 +132,7 @@ class PersonalityTestController extends Controller
         return Excel::download(new PersonalityTestByTypeExport($request->personalityType), $filename);
     }
 
-    public function getAllPersonalityTest()
-    {
-        $tests = PersonalityTest::with('user')->get();
-        return response()->json($tests);
-    }
-
-    public function getPersonalityTestByType(Request $request)
-    {
-        $tests = PersonalityTest::with('user')->where('varkTypeObtained', $request->get('varkType'))->get();
-        return response()->json($tests);
-    }
-
+   
 
     public function edit(PersonalityTest $personalityTest)
     {
