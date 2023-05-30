@@ -41,6 +41,8 @@ Route::get('get-all-vark-test-file-to-pdf', [VarkTestController::class, 'exportA
 Route::get('get-vark-test-by-type-file-to-pdf', [VarkTestController::class, 'exportVarkTestByType']);//  exportar por tipo de test (request varkType {visual, aural, read, kinesthetic})
 
 Route::get('get-user-vark-test-file-to-excel', [VarkTestController::class, 'exportVarkTestToExcel']);// esportar test a excel (request email)
+Route::get('get-all-vark-test-file-to-excel', [VarkTestController::class, 'exportAllVarkTestToExcel']);// esportar test a excel (sin request)
+Route::get('get-vark-test-by-type-file-to-excel', [VarkTestController::class, 'exportVarkTestByTypeToExcel']);// esportar test a excel (request varkType)
 
 // ####################################################################################################
 
@@ -54,6 +56,10 @@ Route::post('send-user-personality-test', [PersonalityTestController::class, 'st
 Route::get('get-user-personality-test-to-pdf', [PersonalityTestController::class, 'show']); //test individual endpoint con parametro email
 Route::get('get-personality-test-by-type-to-pdf', [PersonalityTestController::class, 'getPersonalityTestByType']);//test por tipo endpoint con parametro personalityType
 Route::get('get-all-personality-test-to-pdf', [PersonalityTestController::class, 'getAllPersonalityTest']); //todos los test endpoint sin parametros
+
+Route::get('get-user-personality-test-file-to-excel', [PersonalityTestController::class, 'exportPersonalityTestToExcel']);// esportar test a excel (request email)
+Route::get('get-all-personality-test-file-to-excel', [PersonalityTestController::class, 'exportAllPersonalityTestToExcel']);// esportar test a excel (sin request)
+Route::get('get-personality-test-by-type-file-to-excel', [PersonalityTestController::class, 'exportPersonalityTestByTypeToExcel']);// esportar test a excel (request personalityType)
 
 // ####################################################################################################
 

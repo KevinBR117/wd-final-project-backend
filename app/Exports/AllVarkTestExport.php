@@ -13,8 +13,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 
-class VarkTestExport implements
-    // FromCollection,
+class AllVarkTestExport implements
     WithHeadings,
     FromQuery,
     ShouldAutoSize,
@@ -22,27 +21,15 @@ class VarkTestExport implements
     WithEvents,
     WithCustomStartCell
 {
-
-
     use Exportable;
 
     protected $data;
     protected $posicionI = 1;
     protected $posicionJ = 1;
 
-    protected $email;
-
-    function __construct($email)
-    {
-        $this->email = $email;
-        // dd($email);
-    }
-
     public function query()
     {
-        // $data = VarkTest::query()->with('user')->where('email', $this->email)->get();
-        $data = VarkTest::query()->with('user')->where('email', $this->email);
-        // dd($data);
+        $data = VarkTest::query()->with('user');
         return $data;
     }
 

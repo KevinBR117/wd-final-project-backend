@@ -6,7 +6,9 @@ use PDF;
 use Illuminate\Http\Request;
 use App\Exports\VarkTestExport;
 use App\Models\VarkTest\VarkTest;
+use App\Exports\AllVarkTestExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\VarkTestByTypeExport;
 use App\Models\VarkTest\VarkQuestions;
 
 class VarkTestController extends Controller
@@ -69,6 +71,21 @@ class VarkTestController extends Controller
         // dd($request->get('email'));
         $filename = 'result-vark-test(' . $request->email . ').xlsx';
         return Excel::download(new VarkTestExport($request->email), $filename);
+    }
+    public function exportAllVarkTestToExcel()
+    {
+        // dd($request->get('email'));
+        $filename = 'result-all-vark-test.xlsx';
+        return Excel::download(new AllVarkTestExport, $filename);
+    }
+
+
+
+    public function exportVarkTestByTypeToExcel(Request $request)
+    {
+        // dd($request->get('email'));
+        $filename = 'result-vark-test(' . $request->varkType . ').xlsx';
+        return Excel::download(new VarkTestByTypeExport($request->varkType), $filename);
     }
 
     // ###################################################################################################

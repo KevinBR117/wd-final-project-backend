@@ -2,47 +2,33 @@
 
 namespace App\Exports;
 
-use App\Models\VarkTest\VarkTest;
+use App\Models\PersonalityTest\PersonalityTest;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 
-class VarkTestExport implements
-    // FromCollection,
-    WithHeadings,
-    FromQuery,
-    ShouldAutoSize,
-    WithMapping,
-    WithEvents,
-    WithCustomStartCell
+class AllPersonalityTestExport implements
+WithHeadings,
+FromQuery,
+ShouldAutoSize,
+WithMapping,
+WithEvents,
+WithCustomStartCell
 {
-
-
     use Exportable;
 
     protected $data;
     protected $posicionI = 1;
     protected $posicionJ = 1;
 
-    protected $email;
-
-    function __construct($email)
-    {
-        $this->email = $email;
-        // dd($email);
-    }
-
     public function query()
     {
-        // $data = VarkTest::query()->with('user')->where('email', $this->email)->get();
-        $data = VarkTest::query()->with('user')->where('email', $this->email);
-        // dd($data);
+        $data = PersonalityTest::query()->with('user');
         return $data;
     }
 
@@ -51,11 +37,15 @@ class VarkTestExport implements
         return [
             $data->user->name,
             $data->email,
-            $data->visualPunctuation,
-            $data->auralPunctuation,
-            $data->readPunctuation,
-            $data->kinestheticPunctuation,
-            $data->varkTypeObtained
+            $data->extrovertScore,
+            $data->introvertScore,
+            $data->sensoryScore,
+            $data->intuitiveScore,
+            $data->rationalScore,
+            $data->emotionalScore,
+            $data->qualifierScore,
+            $data->perceptualScore,
+            $data->personalityTypeObtained
         ];
     }
     public function headings(): array
@@ -64,11 +54,15 @@ class VarkTestExport implements
             [
                 'name',
                 'email',
-                'visualPunctuation',
-                'auralPunctuation',
-                'readPunctuation',
-                'kinestheticPunctuation',
-                'varkTypeObtained'
+                'extrovertScore',
+                'introvertScore',
+                'sensoryScore',
+                'intuitiveScore',
+                'rationalScore',
+                'emotionalScore',
+                'qualifierScore',
+                'perceptualScore',
+                'personalityTypeObtained'
             ],
         ];
     }
@@ -83,7 +77,7 @@ class VarkTestExport implements
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                $event->sheet->getStyle('A1' . ':' . "G1")->applyFromArray([
+                $event->sheet->getStyle('A1' . ':' . "K1")->applyFromArray([
                     'font' => [
                         'bold' => true,
                         'color' => ['rgb' => 'FFFFFF']
@@ -117,7 +111,7 @@ class VarkTestExport implements
                     $this->posicionI +=  1;
                     $this->posicionJ += 1;
 
-                    $event->sheet->getStyle('A' . $this->posicionI . ':' . 'G' . $this->posicionJ)->applyFromArray([
+                    $event->sheet->getStyle('A' . $this->posicionI . ':' . 'K' . $this->posicionJ)->applyFromArray([
                         'font' => [
                             'bold' => false,
                             'color' => ['rgb' => '000000']

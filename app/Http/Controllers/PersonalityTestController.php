@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PersonalityTest\PersonalityMainTypes;
-use App\Models\PersonalityTest\PersonalityPersonalities;
-use App\Models\PersonalityTest\PersonalitySuggestions;
+use PDF;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PersonalityTestExport;
+use App\Exports\AllPersonalityTestExport;
 use App\Models\PersonalityTest\PersonalityTest;
 use App\Models\PersonalityTest\PersonalityDangers;
-use Illuminate\Http\Request;
-use PDF;
+use App\Models\PersonalityTest\PersonalityMainTypes;
+use App\Models\PersonalityTest\PersonalitySuggestions;
+use App\Models\PersonalityTest\PersonalityPersonalities;
+use App\Exports\PersonalityTestByTypeExport;
 
 class PersonalityTestController extends Controller
 {
@@ -94,6 +98,26 @@ class PersonalityTestController extends Controller
         $pdf = PDF::loadView('PersonalityTest', array('data' => $data))->setPaper('a2', 'portrait');
         return $pdf->download('personality_test_by_type.pdf');
 
+    }
+
+    public function exportPersonalityTestToExcel(Request $request)
+    {
+        // dd($request->get('email'));
+        $filename = 'result-personality-test(' . $request->email . ').xlsx';
+        return Excel::download(new PersonalityTestExport($request->email), $filename);
+    }
+    public function exportAllPersonalityTestToExcel()
+    {
+        // dd($request->get('email'));
+        $filename = 'result-all-peronality-test.xlsx';
+        return Excel::download(new AllPersonalityTestExport, $filename);
+    }
+
+    public function exportPersonalityTestByTypeToExcel(Request $request)
+    {
+        // dd($request->get('personalityType'));
+        $filename = 'result-all-personality-test(' . $request->personalityType. ').xlsx';
+        return Excel::download(new PersonalityTestByTypeExport($request->personalityType), $filename);
     }
 
     public function getAllPersonalityTest()

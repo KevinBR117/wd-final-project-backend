@@ -6,15 +6,13 @@ use App\Models\VarkTest\VarkTest;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 
-class VarkTestExport implements
-    // FromCollection,
+class VarkTestByTypeExport implements
     WithHeadings,
     FromQuery,
     ShouldAutoSize,
@@ -22,27 +20,22 @@ class VarkTestExport implements
     WithEvents,
     WithCustomStartCell
 {
-
-
+   
     use Exportable;
 
     protected $data;
     protected $posicionI = 1;
     protected $posicionJ = 1;
 
-    protected $email;
+    protected $varkType;
 
-    function __construct($email)
+    function __construct($varkType)
     {
-        $this->email = $email;
-        // dd($email);
+        $this->varkType = $varkType;
     }
-
     public function query()
     {
-        // $data = VarkTest::query()->with('user')->where('email', $this->email)->get();
-        $data = VarkTest::query()->with('user')->where('email', $this->email);
-        // dd($data);
+        $data = VarkTest::query()->with('user')->where('varkTypeObtained', $this->varkType);
         return $data;
     }
 
