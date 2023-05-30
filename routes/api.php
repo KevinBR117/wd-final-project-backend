@@ -62,10 +62,9 @@ Route::get('get-comments-file', [CommentController::class, 'exportPDF']);//expor
 // ################################################## endpoints para dashboards #############################################
 // ################# varktest ######################
 route::get('get-total-vark-test', [VarkTestController::class, 'getTotalVarkTest']); //request none
-route::get('get-count-vark-test-by-type', [VarkTestController::class, 'getCountVarkTestByType']); //request varkType{visual,aural,read,kinesthetic}
-// #################################################
+route::get('get-count-vark-test-by-type', [VarkTestController::class, 'getCountVarkTestByType']); //request none
 
 // ################# personalitytest ###############
 route::get('get-total-personality-test', [PersonalityTestController::class, 'getTotalPersonalityTest']); //request none
-route::get('get-count-personality-test-by-type', [VarkTestController::class, 'getCountPersonalityTestByType']); //request personalityTypeObtained = {Técnico Analítico, Controlador, Apoyo, Social}
+route::get('get-count-personality-test-by-type', [PersonalityTestController::class, 'getCountPersonalityTestByType']); //request none
 // #################################################

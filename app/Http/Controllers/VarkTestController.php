@@ -99,11 +99,38 @@ class VarkTestController extends Controller
     public function getTotalVarkTest()
     {
         $total_tests = count(VarkTest::all());
-        return $total_tests;
+        return response()->json(['total_vark_test' => $total_tests]);
+        // return $total_tests;
     }
-    public function getCountVarkTestByType(Request $request)
+    public function getCountVarkTestByType()
     {
-        $total_tests = count(VarkTest::where('varkTypeObtained', $request->get('varkType'))->get());
-        return $total_tests;
+        $total_tests = VarkTest::all();
+        $visual = 0;
+        $aural = 0;
+        $read = 0;
+        $kinesthetic = 0;
+
+        foreach ($total_tests as $test) {
+
+            if (strtolower($test->varkTypeObtained) == 'visual') {
+                $visual += 1;
+            } elseif (strtolower($test->varkTypeObtained) == 'aural') {
+                $aural += 1;
+            }
+            elseif(strtolower($test->varkTypeObtained) == 'read') {
+                $read += 1;
+            }
+            else{
+                $kinesthetic += 1;
+            }
+        }
+
+        $array = [
+            "visual" => $visual,
+            "aural" => $aural,
+            "read" => $read,
+            "kinesthetic" => $kinesthetic
+        ];
+        return response()->json($array);
     }
 }

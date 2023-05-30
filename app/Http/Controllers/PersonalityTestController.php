@@ -127,14 +127,40 @@ class PersonalityTestController extends Controller
 
     public function getTotalPersonalityTest()
     {
-        $total_test = count(PersonalityTest::all());
-        return $total_test;
+        $total_tests = count(PersonalityTest::all());
+        return response()->json(['total_pesonality_test' => $total_tests]);
     }
 
-    public function getCountPersonalityTestByType(Request $request)
+    public function getCountPersonalityTestByType()
     {
-        $total_tests = count(PersonalityTest::where('personalityTypeObtained', $request->get('personalityTypeObtained'))->get());
-        return $total_tests;
+        $total_tests = PersonalityTest::all();
+        $tecnico_analitico = 0;
+        $controlador = 0;
+        $apoyo = 0;
+        $social = 0;
+
+        foreach ($total_tests as $test) {
+
+            if (strtolower($test->personalityTypeObtained) == 'técnico analítico') {
+                $tecnico_analitico += 1;
+            } elseif (strtolower($test->personalityTypeObtained) == 'controlador') {
+                $controlador += 1;
+            }
+            elseif(strtolower($test->personalityTypeObtained) == 'apoyo') {
+                $apoyo += 1;
+            }
+            else{
+                $social += 1;
+            }
+        }
+
+        $array = [
+            "tecnico_analitico" => $tecnico_analitico,
+            "Controlador" => $controlador,
+            "apoyo" => $apoyo,
+            "social" => $social
+        ];
+        return response()->json($array);
     }
 
 }
