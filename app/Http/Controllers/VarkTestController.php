@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VarkTest\VarkQuestions;
-use App\Models\VarkTest\VarkTest;
-use Illuminate\Http\Request;
 use PDF;
+use Illuminate\Http\Request;
+use App\Exports\VarkTestExport;
+use App\Models\VarkTest\VarkTest;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\VarkTest\VarkQuestions;
 
 class VarkTestController extends Controller
 {
@@ -36,6 +38,7 @@ class VarkTestController extends Controller
         return response()->json($questions);
     }
 
+    // ##################### pdf exports files #######################3
     public function exportVarkTest(Request $request)
     {
         $data = VarkTest::with('user')->where('email', $request->get('email'))->get();
@@ -59,7 +62,17 @@ class VarkTestController extends Controller
         return $pdf->download('vark_test_by_type.pdf');
 
     }
+    // ###################################################################################################
 
+    // ######################### excel export files  #####################################################
+
+    public function exportVarkTestToExcel(Request $request){
+        // dd($request->get('email'));
+        $filename = 'result-vark-test('.$request->email.').xlsx';
+        return Excel::download(new VarkTestExport($request->email), $filename);
+    }
+
+    // ###################################################################################################
     public function getAllVarkTest()
     {
         $tests = VarkTest::with('user')->get();
