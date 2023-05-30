@@ -156,7 +156,7 @@ class PersonalityTestController extends Controller
 
         $array = [
             "tecnico_analitico" => $tecnico_analitico,
-            "Controlador" => $controlador,
+            "controlador" => $controlador,
             "apoyo" => $apoyo,
             "social" => $social
         ];
