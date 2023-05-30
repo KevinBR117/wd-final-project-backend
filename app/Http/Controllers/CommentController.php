@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Comment;
 use Illuminate\Http\Request;
-use PDF;
+use App\Exports\AllCommentsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CommentController extends Controller
 {
@@ -34,6 +36,13 @@ class CommentController extends Controller
 
         return $pdf->download('comments.pdf');
 
+    }
+
+    public function exportAllCommentsToExcel()
+    {
+        // dd($request->get('email'));
+        $filename = 'result-all-comments-test.xlsx';
+        return Excel::download(new AllCommentsExport, $filename);
     }
 
     public function show(Comment $comment)

@@ -65,6 +65,7 @@ Route::get('get-personality-test-by-type-file-to-excel', [PersonalityTestControl
 
 Route::post('send-comments', [CommentController::class, 'store']);
 Route::get('get-comments-file', [CommentController::class, 'exportPDF']);//exportar archivo pdf de comentarios
+Route::get('get-all-comments-file-to-excel', [CommentController::class, 'exportAllCommentsToExcel']);// esportar test a excel (sin request)
 
 // ################################################## endpoints para dashboards #############################################
 // ################# varktest ######################
