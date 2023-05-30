@@ -33,7 +33,8 @@ class VarkTestController extends Controller
         return response()->json($test);
     }
 
-    public function getQuestions(){
+    public function getQuestions()
+    {
         $questions = VarkQuestions::with('answers')->get();
         return response()->json($questions);
     }
@@ -44,7 +45,6 @@ class VarkTestController extends Controller
         $data = VarkTest::with('user')->where('email', $request->get('email'))->get();
         $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
         return $pdf->download('vark_test.pdf');
-
     }
 
     public function exportAllVarkTest()
@@ -52,7 +52,6 @@ class VarkTestController extends Controller
         $data = VarkTest::with('user')->get();
         $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
         return $pdf->download('all_vark_test.pdf');
-
     }
 
     public function exportVarkTestByType(Request $request)
@@ -60,15 +59,15 @@ class VarkTestController extends Controller
         $data = VarkTest::with('user')->where('varkTypeObtained', $request->get('varkType'))->get();
         $pdf = PDF::loadView('varkTest', array('data' => $data))->setPaper('a2', 'portrait');
         return $pdf->download('vark_test_by_type.pdf');
-
     }
     // ###################################################################################################
 
     // ######################### excel export files  #####################################################
 
-    public function exportVarkTestToExcel(Request $request){
+    public function exportVarkTestToExcel(Request $request)
+    {
         // dd($request->get('email'));
-        $filename = 'result-vark-test('.$request->email.').xlsx';
+        $filename = 'result-vark-test(' . $request->email . ').xlsx';
         return Excel::download(new VarkTestExport($request->email), $filename);
     }
 
@@ -95,5 +94,16 @@ class VarkTestController extends Controller
 
     public function destroy(VarkTest $varkTest)
     {
+    }
+
+    public function getTotalVarkTest()
+    {
+        $total_tests = count(VarkTest::all());
+        return $total_tests;
+    }
+    public function getCountVarkTestByType(Request $request)
+    {
+        $total_tests = count(VarkTest::where('varkTypeObtained', $request->get('varkType'))->get());
+        return $total_tests;
     }
 }

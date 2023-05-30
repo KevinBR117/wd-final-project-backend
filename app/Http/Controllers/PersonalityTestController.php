@@ -124,4 +124,17 @@ class PersonalityTestController extends Controller
     {
         //
     }
+
+    public function getTotalPersonalityTest()
+    {
+        $total_test = count(PersonalityTest::all());
+        return $total_test;
+    }
+
+    public function getCountPersonalityTestByType(Request $request)
+    {
+        $total_tests = count(PersonalityTest::where('personalityTypeObtained', $request->get('personalityTypeObtained'))->get());
+        return $total_tests;
+    }
+
 }
